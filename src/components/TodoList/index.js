@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TodoContext } from '../../TodoContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/free-regular-svg-icons'
@@ -12,6 +12,7 @@ function TodoList() {
     const trashIcon = <FontAwesomeIcon icon={faTrashAlt} />
 
     const [ todoData, setTodoData ] = useContext(TodoContext)
+    const [ todos, setTodos ] = useState(todoData)
 
     const delTodo = (id) => {
         setTodoData(
@@ -20,28 +21,37 @@ function TodoList() {
     }
     const toggleStatus = (id) => {
         const tempState = [ ...todoData ]
-        tempState.map((todo, index) => {
+        tempState.map((todo) => {
             if (todo.id === id) {
-                todo.isDone = !todo.isDone
+                todo.completed = !todo.completed
             }
         })
         setTodoData(tempState)
     }
 
+    const showFiltered = (status) => {
+        const filtered = [ ...todoData ]
+        setTodos(filtered.filter((filteredTodo) => filteredTodo.completed !== status))
+    }
+
+    useEffect(() => {
+        setTodos(todoData)
+    }, [ todoData ])
+
     return (
         <div className="list-container">
+            <FilterTodo filter={showFiltered} />
             <ul>
-                {todoData.map((item) =>
-                    <div className={`todo-list ${item.isDone ? "item-done" : null}`}>
-                        <li key={item.id} onClick={() => { toggleStatus(item.id) }}>
-                            <span>{item.isDone ? checkIcon : circleIcon}</span>
-                            <span className="todo-text">{item.todo}</span>
+                {todos.map((item) =>
+                    <div key={item.id} className={`todo-list ${item.completed ? "item-done" : null}`}>
+                        <li onClick={() => { toggleStatus(item.id) }}>
+                            <span>{item.completed ? checkIcon : circleIcon}</span>
+                            <span className="todo-text">{item.title}</span>
                         </li>
                         <span onClick={() => { delTodo(item.id) }}>{trashIcon}</span>
                     </div>
                 )}
             </ul>
-            <FilterTodo />
         </div>
     )
 }

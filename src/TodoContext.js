@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from "react";
+import axios from "axios";
 
 const data = [
     {
@@ -22,6 +23,13 @@ const data = [
 export const TodoContext = createContext();
 
 const TodoDataProvider = (props) => {
+
+    useEffect(() => {
+        (async () => {
+            const result = await axios('https://jsonplaceholder.typicode.com/todos?_limit=10');
+            setTodoData(result.data)
+        })()
+    }, [])
 
     const [ todoData, setTodoData ] = useState([ ...data ])
 
