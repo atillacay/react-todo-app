@@ -90,6 +90,7 @@
   border-radius: 8px;
   background-color: #007bff;
   color: #fff;
+  width: 150px;
 }
 .filter-btn > button:hover {
   background-color: #fff;
