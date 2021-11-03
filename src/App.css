@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
 .App {
   text-align: center;
   display: flex;
@@ -5,30 +7,52 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #e5e5e5;
 }
 .app-container {
   width: 650px;
   background-color: #ffffff;
   padding: 10px;
-  box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 55%);
-  border-radius: 8px;
+  box-shadow: inset 0px 0px 20px 0px #00000052;
+  border-radius: 16px;
+  height: 60%;
+  padding: 10px 20px;
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.app-container::-webkit-scrollbar {
+  display: none;
 }
 .add-todo > input {
   width: 100%;
   padding: 20px 0px;
   margin-bottom: 20px;
   border: none;
-  box-shadow: 0 0 10px 1px #b5b5b5;
+  box-shadow: inset 0 0 3px 0px #b5b5b5;
   height: 35px;
   text-indent: 10px;
+  border-radius: 8px;
 }
 .add-todo > input:focus-visible {
   outline: none;
 }
+.add-todo > h1 {
+  font-family: "Lobster", cursive;
+  letter-spacing: 6px;
+  font-size: 48px;
+  color: #1b7bce;
+}
 .list-container > ul {
   padding: 0;
   margin: 0;
+  height: 265px;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.list-container > ul::-webkit-scrollbar {
+  display: none;
 }
 
 .todo-list {
@@ -36,8 +60,9 @@
   justify-content: space-around;
   align-items: center;
   margin: 5px 0;
-  padding: 10px;
-  background-color: rgb(200, 200, 200);
+  padding: 10px 20px;
+  background-color: #b1c3d3;
+  border-radius: 8px;
 }
 
 .todo-list li {
@@ -47,6 +72,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  cursor: pointer;
 }
 .todo-text {
   width: 100%;
@@ -56,6 +82,18 @@
 .filter-btn {
   display: flex;
   justify-content: space-around;
+  margin: 24px 0px;
+}
+.filter-btn > button {
+  padding: 12px;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #fff;
+}
+.filter-btn > button:hover {
+  background-color: #fff;
+  color: #007bff;
 }
 .item-done {
   text-decoration: line-through;

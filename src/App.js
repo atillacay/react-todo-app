@@ -4,7 +4,6 @@ import TodoList from './components/TodoList';
 import TodoDataProvider from './TodoContext';
 import './App.css'
 
-
 function App() {
   return (
     <div className="App">

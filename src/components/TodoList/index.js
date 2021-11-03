@@ -7,8 +7,8 @@ import FilterTodo from '../FilterTodo'
 
 function TodoList() {
 
-    const circleIcon = <FontAwesomeIcon icon={faCircle} />
-    const checkIcon = <FontAwesomeIcon icon={faCheck} />
+    const circleIcon = <FontAwesomeIcon icon={faCircle} style={{ color: "#fff" }} />
+    const checkIcon = <FontAwesomeIcon icon={faCheck} style={{ color: "007bff" }} />
     const trashIcon = <FontAwesomeIcon icon={faTrashAlt} />
 
     const [ todoData, setTodoData ] = useContext(TodoContext)

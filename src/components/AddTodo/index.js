@@ -2,11 +2,8 @@ import React, { useContext, useRef, useEffect } from 'react'
 import { TodoContext } from '../../TodoContext'
 
 function AddTodo() {
-
     const [ todoData, setTodoData ] = useContext(TodoContext)
-
     const inputElement = useRef(null)
-
     const add = (e) => {
 
         let randNum = Math.floor(Math.random() * 3)
@@ -29,6 +26,7 @@ function AddTodo() {
 
     return (
         <div className="add-todo">
+            <h1>Todo App</h1>
             <input ref={inputElement} type="text" onKeyPress={add} placeholder="Add Todo" />
         </div>
     )
